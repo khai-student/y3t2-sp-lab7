@@ -22,9 +22,43 @@ namespace SP_Lab7_UWP
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private List<MenuItem> menuItems = new List<MenuItem>();
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            menuItems.Add(new MenuItem { Text = "Задание по варианту", Description = "Конвертация величин" });
+            menuItems.Add(new MenuItem { Text = "О программе", Description = "Информация о авторе" });
+
+            listView.ItemsSource = menuItems;
+
+            listView.ItemClick += ListView_ItemClick;
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            switch (e.ClickedItem.ToString())
+            {
+                case "Задание по варианту":
+                    this.contentFrame.Navigate(typeof(TaskPage));
+                    break;
+                case "О программе":
+                    this.contentFrame.Navigate(typeof(AboutPage));
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    public class MenuItem
+    {
+        public string Text { get; set; }
+        public string Description { get; set; }
+        public override string ToString()
+        {
+            return Text;
         }
     }
 }

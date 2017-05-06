@@ -8,6 +8,35 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+            <ListView x:Name="listView"
+                  HorizontalAlignment="Left"
+                  Margin="0,0,0,0"
+                  VerticalAlignment="Stretch"
+                  SelectionMode="None"
+                  IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Text}" 
+                           Margin="20,0,20,8"
+                           FontSize="16" 
+                           FontStyle="Oblique" 
+                           FontWeight="SemiBold"
+                           Foreground="Green" />
+                            <TextBlock Text="{Binding Description}" 
+                           Margin="20,0,20,8"
+                           FontSize="10"
+                           Foreground="DarkGray" 
+                           Opacity="0.8" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Frame x:Name="contentFrame"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Stretch"/>
+        </StackPanel>
 
     </Grid>
 </Page>
